@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ardicture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: {
+          montserrat: ['Montserrat', 'sans-serif'],
+          poppins: ['Poppins', 'sans-serif'],
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-montserrat">
+  <!-- navbar -->
+  <nav class="bg-white h-16 flex items-center py-4 w-full z-50 sticky top-0">
+    <div class="w-72">
+        <div class="flex items-center ml-6">
+            <img class="h-10" src="src/img/main-logo.png" alt="Ardicture Logo">
+            <img class="h-12" src="src/img/text-logo.png" alt="Ardicture Text Logo">
+        </div>
+    </div>
+
+    <div class="flex">
+        <a href="#home" class="mx-2">Home</a>
+        <a href="#about" class="mx-2">About</a>
+    </div>
+
+    <div class="flex w-full justify-end">
+      <a href="https://www.instagram.com/bagus_w.s/" target="_blank" class="mx-2">
+        <img class="h-8 mr-2" src="src/img/instagram-logo.png" alt="Instagram Logo">
+      </a>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <div id="home" class="bg-black py-20 flex">
+    <div class="w-1/3 flex flex-col pl-10">
+      <div class="mt-36 mb-4">
+        <img class="h-44" src="src/img/hero-logo.png" alt="Ardicture Logo">
+      </div>
+      <div>
+        <p class="text-white text-4xl font-bold leading-[2.5rem] tracking-[.15em]">Here in<br><span class="underline decoration-yellow-500 decoration-2 underline-offset-8">Ardicture</span>,<br>we are<br>passionate <br>about <br>changing <br>photos into <br><span class="underline decoration-yellow-500 decoration-2 underline-offset-8">art</span> and <br>providing <br>services to <br>make <br><span class="underline decoration-yellow-500 decoration-2 underline-offset-8">creativity</span>.</p>
+      </div>
+    </div>
+    <div class="w-2/3 pr-24">
+      <div>
+        <p class="text-white text-5xl font-bold tracking-[.15em] underline decoration-yellow-500 decoration-4 underline-offset-8">LATEST WORK</p>
+      </div>
+      <div class="relative mt-10">
+        <img class="h-60 w-full" src="src/img/landscape-photo-thumbnail.jpg" alt="Landscape Photo">
+        <div class="absolute inset-0 flex flex-col justify-end pb-5">
+          <div class="flex items-center ml-6 gap-x-2">
+            <img class="h-8" src="src/img/camera-icon.png" alt="">
+            <p class="text-white text-lg font-medium">LANDSCAPE</p>
+          </div>
+          <p class="text-white text-2xl font-bold leading-tight tracking-widest ml-10 my-2">A landscape photo of plateau taken in <br> the province of Jawa Tengah, Indonesia</p>
+          <div class="ml-10">
+            <img class="h-5" src="src/img/burger-icon.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between mt-14">
+        <div class="w-80">
+          <img src="src/img/mountain-photo-thumbnail.jpg" alt="">
+          <div class="flex flex-col justify-end bg-white pb-5 pt-5">
+            <div class="flex items-center ml-3 gap-x-2">
+              <img class="h-8" src="src/img/camera-icon.png" alt="">
+              <p class="text-black text-base font-medium">LANDSCAPE</p>
+            </div>
+            <p class="text-black text-lg font-bold leading-tight tracking-widest ml-6 my-1">A Mountain Photo Taken in the province of Jawa Tengah, Indonesia </p>
+            <div class="ml-6">
+              <img class="h-5" src="src/img/burger-icon.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="w-80">
+          <img src="src/img/urban-photo-thumbnail.jpg" alt="">
+          <div class="flex flex-col justify-end bg-white pb-5 pt-5">
+            <div class="flex items-center ml-3 gap-x-2">
+              <img class="h-8" src="src/img/lr-icon.png" alt="">
+              <p class="text-black text-base font-medium">URBAN</p>
+            </div>
+            <p class="text-black text-lg font-bold leading-tight tracking-widest ml-6 my-1">Taken in the spot of DIY Jawa Tengah, Indonesia. With Lightroom editing</p>
+            <div class="ml-6">
+              <img class="h-5" src="src/img/burger-icon.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- slide -->
+  <div class="w-full h-screen flex flex-col justify-center items-center">
+    <div class="mx-auto relative z-40 w-full h-full" x-data="{ activeSlide: 1, slides: ['src/img/urban-photo.jpg', 'src/img/landscape-photo.jpg', 'src/img/mountain-photo.jpg', 'src/img/indoor-photo.jpg', 'src/img/sky-photo.jpg'] }">
+        <!-- Slides -->
+        <template x-for="(slide, index) in slides" :key="index">
+            <div x-show="activeSlide === index + 1" class="w-full h-full flex items-center">
+                <img class="object-cover object-bottom w-full h-full" :src="slide" alt="">
+            </div>
+        </template>
+        <!-- Slide Position Info -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg font-bold flex space-x-2">
+            <template x-for="(slide, index) in slides" :key="index">
+                <span x-text="activeSlide === index + 1 ? '—' : '•'"></span>
+            </template>
+        </div>
+        <!-- Prev/Next Arrows -->
+        <div class="absolute inset-0 flex" x-show="slides.length > 1">
+            <div class="flex items-center justify-start w-1/2">
+                <button
+                    class="bg-white text-black hover:text-orange-500 font-bold hover:shadow-lg rounded-full w-12 h-12"
+                    x-on:click="activeSlide = activeSlide > 1 ? activeSlide - 1 : activeSlide">
+                    &#8592;
+                </button>
+            </div>
+            <div class="flex items-center justify-end w-1/2">
+                <button
+                    class="bg-white text-black hover:text-orange-500 font-bold hover:shadow rounded-full w-12 h-12"
+                    x-on:click="activeSlide = activeSlide < slides.length ? activeSlide + 1 : activeSlide">
+                    &#8594;
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- our service -->
+  <div class="bg-black py-14">
+    <div class="flex justify-center content-center mb-14">
+      <p class="text-white text-5xl font-bold tracking-[.15em]">OUR SERVICES</p>
+    </div>
+    <div class="flex">
+      <div class="w-1/2 flex justify-center content-center">
+        <img class="w-80" src="src/img/service-photo.jpg" alt="">
+      </div>
+      <div class="w-1/2">
+        <div class="w-80">
+          <div class="flex mb-5">
+            <img class="h-8 mr-4" src="src/img/check-icon.png" alt="">
+            <div>
+              <p class="text-white text-xl font-bold">Posters and Flyers</p>
+            <p class="text-white text-base font-medium text-justify">We provide a posters and flyers making service, We got your needs! Make a call and let us do the creativity.</p>
+            </div>
+          </div>
+          <div class="flex mb-5">
+            <img class="h-8 mr-4" src="src/img/check-icon.png" alt="">
+            <div>
+              <p class="text-white text-xl font-bold">Graphic Design</p>
+            <p class="text-white text-base font-medium text-justify">We provide a graphic designing  service, Worry not, make a call and let us do the works. Our team will do the rest.</p>
+            </div>
+          </div>
+          <div class="flex mb-5">
+            <img class="h-8 mr-4" src="src/img/check-icon.png" alt="">
+            <div>
+              <p class="text-white text-xl font-bold">Photo Editing</p>
+            <p class="text-white text-base font-medium text-justify">We provide a photo editing service, with our latest tools and preset we can make your photo stunning as possible.</p>
+            </div>
+          </div>
+          <div class="flex mb-5">
+            <img class="h-8 mr-4" src="src/img/check-icon.png" alt="">
+            <div>
+              <p class="text-white text-xl font-bold">Stock Photos</p>
+            <p class="text-white text-base font-medium text-justify">We provide a collection of stock photo, hand picked and ready to grab for, only for your needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- about us -->
+  <div id="about" class="flex">
+    <div class="w-2/3 bg-white">
+      <div class="flex justify-center">
+        <p class="text-black text-3xl font-medium tracking-[.15em] underline decoration-yellow-500 decoration-4 underline-offset-8 my-10">ABOUT US</p>
+      </div>
+      <div class="flex items-center">
+        <div class="w-1/5 flex justify-end pr-4">
+          <img class="h-8" src="src/img/check-orange-icon.png" alt="">
+        </div>
+        <div class="w-4/5">
+          <p class="text-black text-xl font-medium">Ardicture</p>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <div class="w-3/5 text-justify">
+          <p class="text-black text-lg font-normal mt-2 mb-5">At Ardicture, we’re passionate about bringing creativity and inspiration to your visual projects. Whether you're a professional photographer or just starting out, we offer a wide range of high-quality stock photos and powerful editing service to elevate your work.</p>
+          <p class="text-black text-lg font-normal mb-5">Your satisfaction is our priority. Our service will be satisfactory with easy to contact service and reliable downloads. Enjoy a seamless experience as you bring your vision to life from the comfort of your own space.</p>
+        </div>
+      </div>
+      <div class="flex justify-center mt-10">
+        <a href="https://wa.me/+6287717022003" target="_blank" class="text-black text-xl font-medium border-2 rounded-full border-yellow-500 py-2 px-16">
+          Contact Us
+        </a>
+      </div>
+      <div class="flex justify-start mt-2 pl-4">
+        <img class="h-10" src="src/img/main-logo.png" alt="">
+      </div>
+    </div>
+    <div class="w-1/3">
+      <img class="w-full" src="src/img/about-photo.jpg" alt="">
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="px-20 bg-black pb-5">
+    <div class="flex justify-between">
+      <div class="mt-10">
+        <img class="h-20 mb-2" src="src/img/hero-logo.png" alt="">
+        <p class="text-white text-lg font-bold leading-snug mb-2">Bring your vision to life with stunning edits <br>and capture your moment inside.</p>
+        <p class="text-white text-sm font-normal mb-2">Ardicture, 2024.</p>
+      </div>
+      <div class="flex text-white mt-20 gap-x-10">
+        <div>
+          <p class="text-base font-semibold mb-1">Contact</p>
+          <div class="flex items-center">
+            <img class="h-4 mr-2" src="src/img/email-icon.png" alt="">
+            <p class="text-sm mb-1">support@ardicture.id</p>
+          </div>
+          <div class="flex items-center">
+            <img class="h-4 mr-2" src="src/img/phone-icon.png" alt="">
+            <p class="text-sm mb-1">+62 877-1702-2003</p>
+          </div>
+        </div>
+        <div>
+          <p class="text-base font-semibold mb-1">Support</p>
+          <p class="text-sm mb-1">Feedback</p>
+          <p class="text-sm mb-1">Help Center (FAQ)</p>
+        </div>
+        <div>
+          <p class="text-base font-semibold mb-1">Legal</p>
+          <p class="text-sm mb-1">Terms of Service</p>
+          <p class="text-sm mb-1">Privacy Policy</p>
+          <p class="text-sm mb-1">Refund Policy</p>
+        </div>
+      </div>
+    </div>
+    <hr class="mt-10 mb-5">
+    <div>
+      <p class="text-white text-sm">© 2024 Ardicture. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
